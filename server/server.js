@@ -22,7 +22,7 @@ io.on('connection',(socket)=>{
     });
 
     socket.on('createMessage',(message,callback)=>{
-        console.log(`message: ${message}`);
+        // console.log(`message: ${message}`);
         io.emit('newMessage',{
             from:message.from,
             text:message.text,
