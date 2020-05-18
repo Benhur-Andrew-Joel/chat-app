@@ -1,5 +1,6 @@
 const path=require('path');
 const http=require('http');
+
 const express=require('express');
 const socketIO=require('socket.io');
 
@@ -8,6 +9,7 @@ const port=process.env.PORT || 3000;
 var app=express();
 var server=http.createServer(app);
 var io =socketIO(server);
+
 io.on('connection',(socket)=>{
     console.log('User connected');
     socket.emit('newMessage',{
@@ -23,6 +25,7 @@ io.on('connection',(socket)=>{
 
     socket.on('createMessage',(message,callback)=>{
         // console.log(`message: ${message}`);
+
         io.emit('newMessage',{
             from:message.from,
             text:message.text,
